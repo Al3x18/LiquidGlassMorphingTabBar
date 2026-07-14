@@ -14,7 +14,7 @@ protocol MorphingTabProtocol: CaseIterable, Hashable {
 struct MorphingTabBar<Tab: MorphingTabProtocol, ExpandedContent: View>: View {
     @Binding var activeTab: Tab
     @Binding var isExpanded : Bool
-    @ViewBuilder var expandendContent: ExpandedContent
+    @ViewBuilder var expandedContent: ExpandedContent
     
     /// View Properties
     @State private var viewWidth: CGFloat?
@@ -33,8 +33,8 @@ struct MorphingTabBar<Tab: MorphingTabProtocol, ExpandedContent: View>: View {
                 let labelSize: CGSize = CGSize(width: viewWidth, height: 52)
                 let cornerRadius: CGFloat = labelSize.height / 2
                 
-                ExpandingGlassEffect(alignemnt: .center, progress: progress, labelSize: labelSize, cornerRadius: cornerRadius) {
-                    expandendContent
+                ExpandingGlassEffect(alignment: .center, progress: progress, labelSize: labelSize, cornerRadius: cornerRadius) {
+                    expandedContent
                         .opacity(isExpanded ? 1 : 0)
                 } label: {
                     CustomTabBar(symbols: symbols, index: selectedIndex) { image in

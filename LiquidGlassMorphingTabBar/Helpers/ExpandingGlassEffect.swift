@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ExpandingGlassEffect<Content: View, Label: View>: View, Animatable {
-    var alignemnt: Alignment
+    var alignment: Alignment
     var progress: CGFloat
     var labelSize: CGSize = .init(width: 55, height: 55)
     var cornerRadius: CGFloat = 30
@@ -30,7 +30,7 @@ struct ExpandingGlassEffect<Content: View, Label: View>: View, Animatable {
             let rWidth = widthDiff * contentOpacity
             let rHeight = heightDiff * contentOpacity
             
-            ZStack(alignment: alignemnt) {
+            ZStack(alignment: alignment) {
                 content
                     .compositingGroup()
                     .scaleEffect(contentScale)
@@ -85,7 +85,7 @@ struct ExpandingGlassEffect<Content: View, Label: View>: View, Animatable {
     }
     
     var offset: CGFloat {
-        switch alignemnt {
+        switch alignment {
         case .bottom, .bottomLeading, .bottomTrailing: return -75
         case .top, .topLeading, .topTrailing: return 75
         /// Center!
@@ -95,7 +95,7 @@ struct ExpandingGlassEffect<Content: View, Label: View>: View, Animatable {
     
     /// Converting Alignment into UnitPoint for ScaleEffect
     var scaleAnchor: UnitPoint {
-        switch alignemnt {
+        switch alignment {
         case .bottomLeading: .bottomLeading
         case .bottom: .bottom
         case .bottomTrailing: .bottomTrailing

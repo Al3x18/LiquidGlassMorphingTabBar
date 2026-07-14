@@ -44,7 +44,7 @@ struct ContentView: View {
             
             HStack(alignment: .bottom, spacing: 12) {
                 MorphingTabBar(activeTab: $activeTab, isExpanded: $isExpanded) {
-                    DummyExpandendContent()
+                    DummyExpandedContent()
                 }
                 
                 Button {
@@ -67,7 +67,7 @@ struct ContentView: View {
     }
     
     @ViewBuilder
-    func DummyExpandendContent() -> some View {
+    func DummyExpandedContent() -> some View {
         GlassEffectContainer(spacing: 10) {
             LazyVGrid(columns: Array(repeating: GridItem(spacing: 10), count: 4)) {
                 ForEach(actions) { action in
